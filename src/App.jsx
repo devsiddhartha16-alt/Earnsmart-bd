@@ -1,4 +1,5 @@
 
+import AIChatWidget from './components/AIChatWidget.jsx';
 import { useState } from 'react';
 import {
   LayoutDashboard,
@@ -500,7 +501,10 @@ export default function App() {
           <span>© {new Date().getFullYear()} EarnSmart-BD</span>
           <span>Learn skills. Build your future.</span>
         </footer>
+      
       </main>
+
+      <AIChatWidget />
     </div>
   );
 }
