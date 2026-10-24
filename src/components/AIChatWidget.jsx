@@ -1,4 +1,5 @@
 
+import './AIChatWidget.css';
 import { useState } from 'react';
 import { Bot, Send, X, MessageCircle, Sparkles } from 'lucide-react';
 
