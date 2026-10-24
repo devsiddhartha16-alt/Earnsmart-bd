@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EarnSmart-BD is a free learning platform for AI tools, freelancing and digital skills.">
+<title>EarnSmart-BD | Learn & Grow</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7ff;color:#17213a}
+header{background:#101b3d;color:white;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:23px;font-weight:bold;color:#77e5c1}
+nav a{color:white;text-decoration:none;margin:0 7px;font-size:14px}
+.hero{padding:55px 6%;text-align:center;color:white;background:linear-gradient(135deg,#14224c,#5744c8)}
+.hero h1{font-size:36px;margin:8px 0}
+.hero p{line-height:1.8}
+.btn{display:inline-block;background:#20c997;color:#082b2a;padding:12px 18px;border-radius:9px;text-decoration:none;font-weight:bold;margin:8px 4px;border:0;cursor:pointer}
+.btn2{background:white;color:#29366d}
+section{padding:35px 5%;max-width:1100px;margin:auto}
+h2{text-align:center}
+.intro{text-align:center;color:#59647c;line-height:1.8}
+.search{display:block;width:100%;max-width:500px;margin:20px auto;padding:13px;border:1px solid #ccd3e5;border-radius:10px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;padding:22px;border-radius:15px;box-shadow:0 5px 20px #17213a0c}
+.card .emoji{font-size:32px}
+.card h3{margin-bottom:8px}
+.card p{color:#647087;line-height:1.7;font-size:14px}
+.card a{color:#5146c8;font-weight:bold;text-decoration:none}
+.notice{background:#e6f8f1;padding:20px;border-radius:12px;line-height:1.8}
+footer{background:#101b3d;color:white;text-align:center;padding:25px;line-height:1.8}
+footer a{color:#77e5c1}
+[hidden]{display:none!important}
+@media(max-width:500px){.hero h1{font-size:29px}nav a{display:inline-block;margin:7px 4px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">EarnSmart-BD</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#courses">Courses</a>
+    <a href="#videos">Videos</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home" style="max-width:none">
+  <p>🎓 FREE DIGITAL LEARNING PLATFORM</p>
+  <h1>শিখুন নতুন দক্ষতা, গড়ুন নিজের ভবিষ্যৎ</h1>
+  <p>AI Tools, Freelancing, Website Development এবং অনলাইনে কাজের দক্ষতা শিখুন ধাপে ধাপে।</p>
+  <a class="btn" href="#courses">শেখা শুরু করুন →</a>
+  <a class="btn btn2" href="#videos">ভিডিও দেখুন</a>
+</section>
+
+<section id="courses">
+  <h2>📚 আমাদের ফ্রি কোর্স</h2>
+  <p class="intro">নতুনদের জন্য সহজ ভাষায় শেখার ব্যবস্থা। পছন্দের বিষয় খুঁজে নিন।</p>
+  <input class="search" id="search" type="search" placeholder="🔎 কোর্স খুঁজুন..." aria-label="কোর্স খুঁজুন">
+  <div class="grid" id="courseGrid">
+    <article class="card" data-search="ai artificial intelligence prompt">
+      <div class="emoji">🤖</div><h3>AI Tools Masterclass</h3>
+      <p>AI কী, AI tools কীভাবে ব্যবহার করতে হয় এবং ভালো prompt লেখার কৌশল শিখুন।</p>
+      <a href="https://www.youtube.com/results?search_query=AI+tools+tutorial+for+beginners" target="_blank" rel="noopener">ফ্রি লেসন দেখুন →</a>
+    </article>
+    <article class="card" data-search="video animation ai video">
+      <div class="emoji">🎬</div><h3>AI Video Creation</h3>
+      <p>নিজের গল্প, স্ক্রিপ্ট ও আইডিয়া দিয়ে AI ভিডিও তৈরির প্রাথমিক ধাপ শিখুন।</p>
+      <a href="https://www.youtube.com/results?search_query=AI+video+creation+tutorial+beginners" target="_blank" rel="noopener">ফ্রি লেসন দেখুন →</a>
+    </article>
+    <article class="card" data-search="freelancing online earning digital skills">
+      <div class="emoji">💻</div><h3>Freelancing Basics</h3>
+      <p>দক্ষতা নির্বাচন, পোর্টফোলিও, ক্লায়েন্টের সঙ্গে যোগাযোগ ও কাজের প্রস্তুতি নিন।</p>
+      <a href="https://www.youtube.com/results?search_query=freelancing+for+beginners+Bangla" target="_blank" rel="noopener">ফ্রি লেসন দেখুন →</a>
+    </article>
+    <article class="card" data-search="website html css coding">
+      <div class="emoji">🌐</div><h3>Website Development</h3>
+      <p>HTML ও CSS-এর প্রাথমিক ধারণা নিয়ে নিজের ওয়েবসাইট তৈরি করা শিখুন।</p>
+      <a href="https://www.youtube.com/results?search_query=HTML+CSS+Bangla+tutorial+beginners" target="_blank" rel="noopener">ফ্রি লেসন দেখুন →</a>
+    </article>
+    <article class="card" data-search="graphic design canva design">
+      <div class="emoji">🎨</div><h3>Graphic Design</h3>
+      <p>ডিজাইন, রঙ, পোস্টার ও সোশ্যাল মিডিয়া গ্রাফিক্সের বেসিক শিখুন।</p>
+      <a href="https://www.youtube.com/results?search_query=Canva+design+tutorial+Bangla" target="_blank" rel="noopener">ফ্রি লেসন দেখুন →</a>
+    </article>
+    <article class="card" data-search="content writing writing">
+      <div class="emoji">✍️</div><h3>Content Writing</h3>
+      <p>সহজ ও কার্যকর লেখা, আর্টিকেল পরিকল্পনা এবং সম্পাদনার দক্ষতা বাড়ান।</p>
+      <a href="https://www.youtube.com/results?search_query=content+writing+Bangla+tutorial" target="_blank" rel="noopener">ফ্রি লেসন দেখুন →</a>
+    </article>
+  </div>
+  <p id="noResults" hidden>কোনো কোর্স পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজুন।</p>
+</section>
+
+<section id="videos">
+  <h2>🎥 AI Video Learning Hub</h2>
+  <p class="intro">নিচের বাটনে চাপলে সংশ্লিষ্ট বিষয়ের ভিডিও খুঁজে দেখতে পারবে।</p>
+  <div class="grid">
+    <div class="card"><div class="emoji">🧠</div><h3>AI শেখা</h3><p>AI tools ও prompt writing-এর টিউটোরিয়াল।</p><a href="https://www.youtube.com/results?search_query=AI+tools+Bangla+tutorial" target="_blank" rel="noopener">ভিডিও খুঁজুন →</a></div>
+    <div class="card"><div class="emoji">🚀</div><h3>AI Animation</h3><p>অ্যানিমেশন তৈরির ধাপ ও ভিডিও এডিটিং শিখুন।</p><a href="https://www.youtube.com/results?search_query=AI+animation+tutorial+beginner" target="_blank" rel="noopener">ভিডিও খুঁজুন →</a></div>
+  </div>
+  <p class="intro">এগুলো ভিডিও সার্চের লিংক, সরাসরি এমবেড করা ভিডিও নয়। পরে বেছে নেওয়া উপযুক্ত ভিডিও পেজে যুক্ত করা যাবে।</p>
+</section>
+
+<section id="about">
+  <h2>EarnSmart-BD সম্পর্কে</h2>
+  <p class="intro">EarnSmart-BD হলো AI, freelancing, website development ও digital skills শেখার একটি শিক্ষামূলক প্ল্যাটফর্ম। আমাদের লক্ষ্য হলো নতুনদের ধাপে ধাপে শেখানো।</p>
+  <div class="notice">
+    <strong>💡 মনে রাখবেন:</strong> অনলাইনে আয় নিশ্চিত নয়। দক্ষতা, অনুশীলন ও কাজের সুযোগের ওপর ফলাফল নির্ভর করে। কাজ পেতে কাউকে অগ্রিম টাকা দেওয়ার আগে যাচাই করুন।
+  </div>
+</section>
+</main>
+
+<footer>
+  <strong>EarnSmart-BD</strong><br>
+  Learn Skills. Build Your Future.<br>
+  <small>© 2026 EarnSmart-BD | Educational website</small>
+</footer>
+
+<script>
+const search = document.getElementById('search');
+const cards = [...document.querySelectorAll('#courseGrid .card')];
+const noResults = document.getElementById('noResults');
+
+search.addEventListener('input', function () {
+  const query = this.value.trim().toLowerCase();
+  let count = 0;
+  cards.forEach(card => {
+    const match = (card.innerText + ' ' + card.dataset.search)
+      .toLowerCase().includes(query);
+    card.hidden = !match;
+    if (match) count++;
+  });
+  noResults.hidden = count !== 0;
+});
+</script>
+</body>
+</html>
