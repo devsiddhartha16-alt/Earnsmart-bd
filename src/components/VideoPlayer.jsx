@@ -1,4 +1,5 @@
 
+import './VideoPlayer.css';
 import { useState } from 'react';
 
 export default function VideoPlayer({
