@@ -4,169 +4,913 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="EarnSmart-BD is a free learning platform for AI tools, freelancing and digital skills.">
+<meta name="theme-color" content="#080d19">
+<meta name="description" content="EarnSmart-BD — অনলাইনে দক্ষতা শেখার ফ্রি প্ল্যাটফর্ম।">
 <title>EarnSmart-BD | Learn & Grow</title>
+
 <style>
+:root{
+  --bg:#080d19;--panel:#111a2b;--panel2:#17233a;
+  --text:#f2f6ff;--muted:#9eabc3;--green:#39e6a0;
+  --blue:#67a8ff;--border:#263650;--red:#ff7185;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7ff;color:#17213a}
-header{background:#101b3d;color:white;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.logo{font-size:23px;font-weight:bold;color:#77e5c1}
-nav a{color:white;text-decoration:none;margin:0 7px;font-size:14px}
-.hero{padding:55px 6%;text-align:center;color:white;background:linear-gradient(135deg,#14224c,#5744c8)}
-.hero h1{font-size:36px;margin:8px 0}
-.hero p{line-height:1.8}
-.btn{display:inline-block;background:#20c997;color:#082b2a;padding:12px 18px;border-radius:9px;text-decoration:none;font-weight:bold;margin:8px 4px;border:0;cursor:pointer}
-.btn2{background:white;color:#29366d}
-section{padding:35px 5%;max-width:1100px;margin:auto}
-h2{text-align:center}
-.intro{text-align:center;color:#59647c;line-height:1.8}
-.search{display:block;width:100%;max-width:500px;margin:20px auto;padding:13px;border:1px solid #ccd3e5;border-radius:10px;font-size:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:white;padding:22px;border-radius:15px;box-shadow:0 5px 20px #17213a0c}
-.card .emoji{font-size:32px}
-.card h3{margin-bottom:8px}
-.card p{color:#647087;line-height:1.7;font-size:14px}
-.card a{color:#5146c8;font-weight:bold;text-decoration:none}
-.notice{background:#e6f8f1;padding:20px;border-radius:12px;line-height:1.8}
-footer{background:#101b3d;color:white;text-align:center;padding:25px;line-height:1.8}
-footer a{color:#77e5c1}
-[hidden]{display:none!important}
-@media(max-width:500px){.hero h1{font-size:29px}nav a{display:inline-block;margin:7px 4px}}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  line-height:1.6
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--green);outline-offset:2px
+}
+header{
+  position:sticky;top:0;z-index:10;background:#080d19ed;
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+  padding:12px 16px;display:flex;align-items:center;
+  justify-content:space-between;gap:12px
+}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800}
+.logo{
+  background:var(--green);color:#07140e;border-radius:12px;
+  padding:5px 9px;font-weight:900
+}
+.brand small{display:block;color:var(--muted);font-size:11px;font-weight:400}
+.iconbtn,.btn{
+  border:1px solid var(--border);border-radius:11px;
+  background:var(--panel2);color:var(--text);padding:9px 13px
+}
+.btn.primary{background:var(--green);color:#06140e;border:0;font-weight:800}
+.btn.secondary{background:#203451}
+.btn.danger{color:#ffb0bc}
+button:disabled{opacity:.45;cursor:not-allowed}
+main{max-width:1050px;margin:auto;padding:18px 15px 100px}
+.page{display:none}
+.page.active{display:block}
+.hero{
+  padding:25px 20px;border:1px solid var(--border);border-radius:23px;
+  background:radial-gradient(circle at top right,#234b52 0,transparent 48%),
+  linear-gradient(135deg,#14233a,#101629);margin-bottom:18px
+}
+.eyebrow{color:var(--green);font-size:12px;font-weight:800;letter-spacing:1px}
+h1{font-size:clamp(26px,6vw,42px);line-height:1.2;margin:10px 0}
+h2{font-size:22px;margin:20px 0 12px}
+h3{font-size:17px;margin:8px 0}
+p{color:var(--muted);margin:7px 0 14px}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.between{justify-content:space-between}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:17px;padding:16px;min-width:0
+}
+.stat{font-size:26px;font-weight:800}
+.statlabel{font-size:12px;color:var(--muted)}
+.progress{height:8px;background:#25334b;border-radius:20px;overflow:hidden}
+.progress span{display:block;height:100%;width:0;background:var(--green);transition:width .2s}
+.tag{
+  display:inline-block;border-radius:20px;background:#203b3a;
+  color:var(--green);padding:3px 9px;font-size:11px
+}
+.course-icon{font-size:29px}
+.course-card{display:flex;flex-direction:column;gap:9px}
+.course-card .btn{margin-top:auto}
+input,textarea,select{
+  width:100%;background:#091222;color:var(--text);
+  border:1px solid var(--border);border-radius:11px;padding:11px
+}
+textarea{min-height:115px;resize:vertical}
+label{display:block;margin:10px 0 5px;font-size:13px}
+.lesson-list{display:grid;gap:9px}
+.lesson{
+  width:100%;text-align:left;padding:13px;border-radius:12px;
+  background:var(--panel);border:1px solid var(--border);color:var(--text)
+}
+.lesson.done{border-color:#237a60}
+.video-wrap{
+  position:relative;width:100%;aspect-ratio:16/9;background:#02050b;
+  border-radius:15px;overflow:hidden
+}
+.video-wrap iframe,.video-wrap video{width:100%;height:100%;border:0}
+.practice-output{
+  width:100%;height:250px;background:white;border:1px solid var(--border);
+  border-radius:12px
+}
+.feedback{
+  background:#0b1928;border:1px solid var(--border);
+  padding:12px;border-radius:12px;margin-top:10px
+}
+.option{
+  display:block;text-align:left;width:100%;margin:8px 0;padding:12px;
+  background:var(--panel2);color:var(--text);border:1px solid var(--border);
+  border-radius:11px
+}
+.option.correct{border-color:var(--green)}
+.option.wrong{border-color:var(--red)}
+model-viewer{
+  width:100%;height:350px;background:#091222;border-radius:15px;
+  --poster-color:#091222
+}
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:15;
+  display:flex;justify-content:space-around;gap:3px;
+  background:#0c1322f5;border-top:1px solid var(--border);
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom))
+}
+.navbtn{
+  flex:1;min-width:0;border:0;background:transparent;color:var(--muted);
+  font-size:11px;padding:5px 1px;border-radius:10px
+}
+.navbtn span{display:block;font-size:20px}
+.navbtn.active{background:#19362f;color:var(--green)}
+.menu{
+  display:none;position:fixed;right:12px;top:62px;z-index:30;
+  width:min(250px,85vw);background:var(--panel);
+  border:1px solid var(--border);border-radius:15px;padding:9px;
+  box-shadow:0 12px 40px #0008
+}
+.menu.open{display:grid;gap:6px}
+.menu button{
+  background:transparent;color:var(--text);border:0;text-align:left;
+  border-radius:9px;padding:10px
+}
+.menu button:hover{background:var(--panel2)}
+.notice{border-left:3px solid var(--blue);padding:10px 12px;background:#111e32;border-radius:8px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(min-width:720px){
+  main{padding-top:25px}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero{padding:35px}
+}
+@media(max-width:380px){
+  .grid{grid-template-columns:1fr}
+  .brand small{display:none}
+  .navbtn{font-size:10px}
+}
 </style>
 </head>
+
 <body>
 <header>
-  <div class="logo">EarnSmart-BD</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#courses">Courses</a>
-    <a href="#videos">Videos</a>
-    <a href="#about">About</a>
-  </nav>
+  <div class="brand">
+    <div class="logo">ES</div>
+    <div>EarnSmart-BD<small>Learn skills. Build your future.</small></div>
+  </div>
+  <button class="iconbtn" id="menuToggle" aria-label="মেনু খুলুন" aria-expanded="false">⋮</button>
 </header>
 
+<div class="menu" id="menu">
+  <button data-go="home">🏠 Home</button>
+  <button data-go="courses">📚 All Courses</button>
+  <button data-go="practice">🧪 Practice Lab</button>
+  <button data-go="model3d">🪐 3D Model</button>
+  <button data-go="plan">🗓️ Learning Plan</button>
+  <button data-go="profile">👤 Profile & Settings</button>
+</div>
+
 <main>
-<section class="hero" id="home" style="max-width:none">
-  <p>🎓 FREE DIGITAL LEARNING PLATFORM</p>
-  <h1>শিখুন নতুন দক্ষতা, গড়ুন নিজের ভবিষ্যৎ</h1>
-  <p>AI Tools, Freelancing, Website Development এবং অনলাইনে কাজের দক্ষতা শিখুন ধাপে ধাপে।</p>
-  <a class="btn" href="#courses">শেখা শুরু করুন →</a>
-  <a class="btn btn2" href="#videos">ভিডিও দেখুন</a>
-</section>
+  <!-- HOME -->
+  <section class="page active" id="home">
+    <div class="hero">
+      <div class="eyebrow">WELCOME TO EARNSMART-BD</div>
+      <h1>শিখো নতুন দক্ষতা,<br>গড়ো নিজের ভবিষ্যৎ।</h1>
+      <p>ফ্রিতে ডিজিটাল স্কিল শেখো, অনুশীলন করো এবং নিজের অগ্রগতি দেখো।</p>
+      <div class="row">
+        <button class="btn primary" data-go="courses">কোর্স শুরু করো →</button>
+        <button class="btn" data-go="practice">Practice Lab</button>
+      </div>
+    </div>
 
-<section id="courses">
-  <h2>📚 আমাদের ফ্রি কোর্স</h2>
-  <p class="intro">নতুনদের জন্য সহজ ভাষায় শেখার ব্যবস্থা। পছন্দের বিষয় খুঁজে নিন।</p>
-  <input class="search" id="search" type="search" placeholder="🔎 কোর্স খুঁজুন..." aria-label="কোর্স খুঁজুন">
-  <div class="grid" id="courseGrid">
-    <article class="card" data-search="ai artificial intelligence prompt">
-      <div class="emoji">🤖</div><h3>AI Tools Masterclass</h3>
-      <p>AI কী, AI tools কীভাবে ব্যবহার করতে হয় এবং ভালো prompt লেখার কৌশল শিখুন।</p>
-     <a href="videos.html">ভিডিও খুঁজুন →</a> 
-    </article>
-    <article class="card" data-search="video animation ai video">
-      <div class="emoji">🎬</div><h3>AI Video Creation</h3>
-      <p>নিজের গল্প, স্ক্রিপ্ট ও আইডিয়া দিয়ে AI ভিডিও তৈরির প্রাথমিক ধাপ শিখুন।</p>
-     <a href="videos.html">ভিডিও খুঁজুন →</a>
-    </article>
-    <article class="card" data-search="freelancing online earning digital skills">
-      <div class="emoji">💻</div><h3>Freelancing Basics</h3>
-      <p>দক্ষতা নির্বাচন, পোর্টফোলিও, ক্লায়েন্টের সঙ্গে যোগাযোগ ও কাজের প্রস্তুতি নিন।</p>
-    <a href="videos.html">ভিডিও খুঁজুন →</a>
-    </article>
-    <article class="card" data-search="website html css coding">
-      <div class="emoji">🌐</div><h3>Website Development</h3>
-      <p>HTML ও CSS-এর প্রাথমিক ধারণা নিয়ে নিজের ওয়েবসাইট তৈরি করা শিখুন।</p>
-    <a href="videos.html">ভিডিও খুঁজুন →</a>
-    </article>
-    <article class="card" data-search="graphic design canva design">
-      <div class="emoji">🎨</div><h3>Graphic Design</h3>
-      <p>ডিজাইন, রঙ, পোস্টার ও সোশ্যাল মিডিয়া গ্রাফিক্সের বেসিক শিখুন।</p>
-      <a href="videos.html">ভিডিও খুঁজুন →</a>
-    </article>
-    <article class="card" data-search="content writing writing">
-      <div class="emoji">✍️</div><h3>Content Writing</h3>
-      <p>সহজ ও কার্যকর লেখা, আর্টিকেল পরিকল্পনা এবং সম্পাদনার দক্ষতা বাড়ান।</p>
-   <a href="videos.html">ভিডিও খুঁজুন →</a>
-    </article>
-  </div>
-  <p id="noResults" hidden>কোনো কোর্স পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজুন।</p>
-</section>
+    <div class="grid">
+      <div class="card">
+        <div class="stat" id="statCourses">4</div>
+        <div class="statlabel">শেখার কোর্স</div>
+      </div>
+      <div class="card">
+        <div class="stat" id="statLessons">0</div>
+        <div class="statlabel">সম্পন্ন লেসন</div>
+      </div>
+      <div class="card">
+        <div class="stat" id="statProgress">0%</div>
+        <div class="statlabel">সামগ্রিক অগ্রগতি</div>
+      </div>
+    </div>
 
-<section id="videos">
-  <h2>🎥 AI Video Learning Hub</h2>
-  <p class="intro">নিচের বাটনে চাপলে সংশ্লিষ্ট বিষয়ের ভিডিও খুঁজে দেখতে পারবে।</p>
-  <div class="grid">
-    <div class="card"><div class="emoji">🧠</div><h3>AI শেখা</h3><p>AI tools ও prompt writing-এর টিউটোরিয়াল।</p><a href="https://www.youtube.com/results?search_query=AI+tools+Bangla+tutorial" target="_blank" rel="noopener">ভিডিও খুঁজুন →</a></div>
-    <div class="card"><div class="emoji">🚀</div><h3>AI Animation</h3><p>অ্যানিমেশন তৈরির ধাপ ও ভিডিও এডিটিং শিখুন।</p><a href="https://www.youtube.com/results?search_query=AI+animation+tutorial+beginner" target="_blank" rel="noopener">ভিডিও খুঁজুন →</a></div>
-  </div>
-  <p class="intro">এগুলো ভিডিও সার্চের লিংক, সরাসরি এমবেড করা ভিডিও নয়। পরে বেছে নেওয়া উপযুক্ত ভিডিও পেজে যুক্ত করা যাবে।</p>
-</section>
+    <h2>🚀 শেখা চালিয়ে যাও</h2>
+    <div class="card">
+      <div class="row between">
+        <strong>তোমার শেখার অগ্রগতি</strong>
+        <span id="homeProgressLabel" class="tag">0%</span>
+      </div>
+      <div class="progress" style="margin:12px 0"><span id="homeProgress"></span></div>
+      <p>লেসন শেষ করলে “Complete Lesson” বাটনে চাপ দাও।</p>
+      <button class="btn primary" data-go="courses">কোর্স দেখো</button>
+    </div>
 
-<section id="about">
-  <h2>EarnSmart-BD সম্পর্কে</h2>
-  <p class="intro">EarnSmart-BD হলো AI, freelancing, website development ও digital skills শেখার একটি শিক্ষামূলক প্ল্যাটফর্ম। আমাদের লক্ষ্য হলো নতুনদের ধাপে ধাপে শেখানো।</p>
-  <div class="notice">
-    <strong>💡 মনে রাখবেন:</strong> অনলাইনে আয় নিশ্চিত নয়। দক্ষতা, অনুশীলন ও কাজের সুযোগের ওপর ফলাফল নির্ভর করে। কাজ পেতে কাউকে অগ্রিম টাকা দেওয়ার আগে যাচাই করুন।
-  </div>
-</section>
+    <h2>✨ আজ কী শিখবে?</h2>
+    <div class="grid">
+      <div class="card"><div class="course-icon">🌐</div><h3>ওয়েব ডিজাইন</h3><p>HTML ও CSS দিয়ে ওয়েবপেজ তৈরি করো।</p></div>
+      <div class="card"><div class="course-icon">✍️</div><h3>AI Prompt Writing</h3><p>AI-কে ভালো নির্দেশনা লেখা অনুশীলন করো।</p></div>
+      <div class="card"><div class="course-icon">🎨</div><h3>ডিজিটাল কনটেন্ট</h3><p>কনটেন্ট তৈরির মৌলিক ধারণা শেখো।</p></div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section class="page" id="courses">
+    <div class="eyebrow">YOUR LEARNING LIBRARY</div>
+    <h1>📚 সব কোর্স</h1>
+    <p>একটি কোর্স বেছে নিয়ে তার লেসনগুলো ধারাবাহিকভাবে শেখো।</p>
+    <input id="courseSearch" type="search" placeholder="কোর্স খুঁজো..." aria-label="কোর্স খুঁজো">
+    <div class="grid" id="courseGrid" style="margin-top:14px"></div>
+  </section>
+
+  <!-- COURSE DETAIL -->
+  <section class="page" id="courseDetail">
+    <button class="btn" data-go="courses">← সব কোর্স</button>
+    <div id="courseDetailContent"></div>
+  </section>
+
+  <!-- VIDEO PLAYER -->
+  <section class="page" id="player">
+    <button class="btn" id="backToCourse">← কোর্সে ফিরে যাও</button>
+    <h1 id="playerTitle">লেসন</h1>
+    <div class="video-wrap" id="videoWrap">
+      <video id="lessonVideo" controls playsinline preload="metadata">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        তোমার ব্রাউজার ভিডিও চালাতে পারছে না।
+      </video>
+    </div>
+    <p id="videoNote">এটি একটি ডেমো ভিডিও। নিজের ভিডিওর লিংক দিয়ে পরিবর্তন করতে পারো।</p>
+    <div class="card">
+      <h3>এই লেসনে কী শিখবে?</h3>
+      <p id="lessonDescription"></p>
+      <div class="row">
+        <button class="btn secondary" id="prevLesson">← আগের লেসন</button>
+        <button class="btn primary" id="completeLesson">✓ Complete Lesson</button>
+        <button class="btn secondary" id="nextLesson">পরের লেসন →</button>
+      </div>
+      <p id="lessonStatus" class="small"></p>
+    </div>
+  </section>
+
+  <!-- PRACTICE LAB -->
+  <section class="page" id="practice">
+    <div class="eyebrow">LEARN BY DOING</div>
+    <h1>🧪 Practice Lab</h1>
+    <p>কোড লেখো, ফলাফল দেখো এবং ছোট ছোট অনুশীলনের মাধ্যমে শেখো।</p>
+
+    <div class="card">
+      <h2>1. HTML Code Practice</h2>
+      <p>নিচের কোড পরিবর্তন করে “Run Code” চাপ দাও।</p>
+      <textarea id="practiceCode" spellcheck="false" aria-label="HTML কোড"><!DOCTYPE html>
+<html>
+<body style="font-family:Arial;text-align:center;padding:20px">
+  <h1 style="color:green">Hello, Learner!</h1>
+  <p>Welcome to EarnSmart-BD.</p>
+  <button onclick="document.getElementById('msg').textContent='Great job!'">
+    Click Me
+  </button>
+  <p id="msg"></p>
+</body>
+</html></textarea>
+      <div class="row" style="margin:10px 0">
+        <button class="btn primary" id="runCode">▶ Run Code</button>
+        <button class="btn" id="resetCode">Reset Code</button>
+      </div>
+      <iframe class="practice-output" id="codeOutput" title="HTML কোডের ফলাফল" sandbox="allow-scripts"></iframe>
+      <p class="small">নিরাপত্তার জন্য কোডটি আলাদা sandbox-এ চালানো হয়।</p>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>2. AI Prompt Practice</h2>
+      <p>অনুশীলনের জন্য একটি পরিষ্কার ও বিস্তারিত AI prompt লেখো।</p>
+      <label for="promptInput">তোমার Prompt</label>
+      <textarea id="promptInput" placeholder="যেমন: একজন নতুন শিক্ষার্থীর জন্য ৭ দিনের HTML শেখার পরিকল্পনা তৈরি করো। প্রতিদিনের কাজ সহজ ভাষায় বোঝাও।"></textarea>
+      <button class="btn primary" id="checkPrompt" style="margin-top:10px">Prompt যাচাই করো</button>
+      <div class="feedback" id="promptFeedback" aria-live="polite">তোমার prompt এখানে যাচাই করা হবে।</div>
+      <p class="small">এটি সাধারণ নিয়মে লেখা যাচাই করে; কোনো AI সার্ভিসে prompt পাঠায় না।</p>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>3. Quick Quiz</h2>
+      <div id="quizArea"></div>
+      <div class="row">
+        <button class="btn primary" id="nextQuiz">পরের প্রশ্ন →</button>
+        <button class="btn" id="restartQuiz">আবার শুরু</button>
+      </div>
+      <p id="quizScore" aria-live="polite"></p>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>Practice Progress</h2>
+      <div class="row between"><span>সম্পন্ন অনুশীলন</span><strong id="practiceCount">0</strong></div>
+      <div class="progress" style="margin-top:10px"><span id="practiceProgress"></span></div>
+    </div>
+  </section>
+
+  <!-- 3D MODEL -->
+  <section class="page" id="model3d">
+    <div class="eyebrow">INTERACTIVE LEARNING</div>
+    <h1>🪐 3D Model Viewer</h1>
+    <p>3D মডেল ঘুরিয়ে দেখো, কাছে এনে দেখো এবং বিভিন্ন দিক থেকে পর্যবেক্ষণ করো।</p>
+
+    <div class="card">
+      <model-viewer id="modelViewer"
+        src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+        alt="একটি 3D astronaut মডেল"
+        camera-controls auto-rotate
+        shadow-intensity="1"
+        exposure="1"
+        ar
+        loading="eager">
+      </model-viewer>
+      <div class="row" style="margin-top:12px">
+        <button class="btn" id="rotateToggle">⏸ ঘোরানো বন্ধ</button>
+        <button class="btn" id="zoomIn">＋ Zoom In</button>
+        <button class="btn" id="zoomOut">－ Zoom Out</button>
+        <button class="btn" id="resetModel">↻ Reset</button>
+      </div>
+      <p class="small">মডেলটি লোড না হলে ইন্টারনেট সংযোগ পরীক্ষা করো। এটি একটি বাইরের ডেমো 3D ফাইল।</p>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>📘 3D শেখার পরিকল্পনা</h2>
+      <ol>
+        <li>মডেলটি আঙুল দিয়ে ঘুরিয়ে দেখো।</li>
+        <li>Zoom In ও Zoom Out ব্যবহার করো।</li>
+        <li>বিভিন্ন দিক থেকে মডেলের গঠন পর্যবেক্ষণ করো।</li>
+        <li>নিজের ওয়েবসাইটে 3D মডেল যোগ করার ধারণা শেখো।</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- LEARNING PLAN -->
+  <section class="page" id="plan">
+    <div class="eyebrow">YOUR STUDY ROUTINE</div>
+    <h1>🗓️ Learning Plan</h1>
+    <p>প্রতিদিন অল্প করে শেখো। শেষ করা কাজগুলো টিক দিয়ে রাখো।</p>
+    <div class="card">
+      <div id="planTasks"></div>
+      <div class="progress" style="margin:14px 0"><span id="planProgress"></span></div>
+      <p id="planLabel">0% সম্পন্ন</p>
+      <button class="btn" id="resetPlan">পরিকল্পনা আবার শুরু</button>
+    </div>
+    <div class="notice" style="margin-top:14px">
+      <strong>মনে রেখো:</strong> অনলাইনে আয় নিশ্চিত নয়। আগে দক্ষতা শেখো, অনুশীলন করো এবং কোনো কাজ বা প্ল্যাটফর্মে টাকা দেওয়ার আগে যাচাই করো।
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="page" id="profile">
+    <div class="eyebrow">YOUR ACCOUNT</div>
+    <h1>👤 Profile & Settings</h1>
+    <div class="card">
+      <div class="course-icon">👨‍🎓</div>
+      <h2>তোমার প্রোফাইল</h2>
+      <label for="profileName">নাম</label>
+      <input id="profileName" maxlength="60" placeholder="তোমার নাম">
+      <label for="profileGoal">তোমার শেখার লক্ষ্য</label>
+      <select id="profileGoal">
+        <option value="web">Web Development</option>
+        <option value="ai">AI Tools & Prompt Writing</option>
+        <option value="content">Digital Content Creation</option>
+        <option value="freelance">Freelancing Basics</option>
+      </select>
+      <button class="btn primary" id="saveProfile" style="margin-top:12px">প্রোফাইল সংরক্ষণ</button>
+      <p id="profileMessage" aria-live="polite"></p>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>⚙️ Settings</h2>
+      <p>তোমার শেখার অগ্রগতি ও সেটিংস এই ব্রাউজারের local storage-এ রাখা হয়।</p>
+      <button class="btn" data-go="plan">Learning Plan দেখো</button>
+      <button class="btn danger" id="clearProgress" style="margin-top:10px">সব অগ্রগতি মুছে দাও</button>
+      <p class="small">এতে এই ব্রাউজারে রাখা লেসন, অনুশীলন ও পরিকল্পনার তথ্য মুছে যাবে।</p>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>ℹ️ About EarnSmart-BD</h2>
+      <p>অনলাইনে কাজে লাগে এমন ডিজিটাল দক্ষতা শেখার একটি শিক্ষামূলক ওয়েবসাইট।</p>
+      <p class="small">এই সাইটে এখনো প্রকৃত Login/Signup বা সার্ভারভিত্তিক অ্যাকাউন্ট নেই।</p>
+    </div>
+  </section>
+
+  <footer>© <span id="year"></span> EarnSmart-BD · Learn something new every day.</footer>
 </main>
 
-<footer>
-  <strong>EarnSmart-BD</strong><br>
-  Learn Skills. Build Your Future.<br>
-  <small>© 2026 EarnSmart-BD | Educational website</small>
-</footer>
+<nav class="bottom-nav" aria-label="প্রধান নেভিগেশন">
+  <button class="navbtn active" data-go="home"><span>🏠</span>Home</button>
+  <button class="navbtn" data-go="courses"><span>📚</span>Courses</button>
+  <button class="navbtn" data-go="practice"><span>🧪</span>Practice</button>
+  <button class="navbtn" data-go="model3d"><span>🪐</span>3D Model</button>
+  <button class="navbtn" data-go="plan"><span>🗓️</span>Plan</button>
+  <button class="navbtn" data-go="profile"><span>👤</span>Profile</button>
+</nav>
+
+<!-- 3D model viewer library -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
 <script>
-const search = document.getElementById('search');
-const cards = [...document.querySelectorAll('#courseGrid .card')];
-const noResults = document.getElementById('noResults');
+"use strict";
 
-search.addEventListener('input', function () {
-  const query = this.value.trim().toLowerCase();
-  let count = 0;
-  cards.forEach(card => {
-    const match = (card.innerText + ' ' + card.dataset.search)
-      .toLowerCase().includes(query);
-    card.hidden = !match;
-    if (match) count++;
+/* Course and lesson information */
+const courses = [
+  {
+    id:"html",icon:"🌐",title:"HTML & CSS Basics",level:"Beginner",
+    description:"ওয়েবসাইটের কাঠামো ও ডিজাইন শেখো।",
+    lessons:[
+      {title:"HTML পরিচিতি",desc:"HTML কী, ট্যাগ কী এবং একটি সাধারণ ওয়েবপেজ কীভাবে তৈরি হয় তা শেখো।"},
+      {title:"Headings, Paragraphs & Links",desc:"শিরোনাম, অনুচ্ছেদ, লিংক ও ছবি যোগ করা অনুশীলন করো।"},
+      {title:"CSS দিয়ে ডিজাইন",desc:"রং, ফন্ট, spacing ও background পরিবর্তন করতে শেখো।"},
+      {title:"ছোট ওয়েবপেজ তৈরি",desc:"আগের বিষয়গুলো ব্যবহার করে নিজের একটি ছোট ওয়েবপেজ বানাও।"}
+    ]
+  },
+  {
+    id:"ai",icon:"🤖",title:"AI Tools & Prompt Writing",level:"Beginner",
+    description:"AI টুল ব্যবহার ও ভালো prompt লেখা শেখো।",
+    lessons:[
+      {title:"AI-এর পরিচিতি",desc:"AI কী এবং কোন কাজে ব্যবহার করা যায় তা শেখো।"},
+      {title:"Prompt-এর গঠন",desc:"কাজ, প্রেক্ষাপট, নির্দেশনা ও কাঙ্ক্ষিত ফলাফল লিখতে শেখো।"},
+      {title:"লেখা ও আইডিয়া তৈরি",desc:"AI-কে দিয়ে ধারণা তৈরি ও খসড়া লেখার অনুশীলন করো।"},
+      {title:"ফলাফল যাচাই",desc:"AI-এর উত্তর যাচাই করো এবং ভুল তথ্য শনাক্ত করার চেষ্টা করো।"}
+    ]
+  },
+  {
+    id:"content",icon:"🎨",title:"Digital Content Creation",level:"Beginner",
+    description:"ডিজিটাল কনটেন্ট পরিকল্পনা ও তৈরির ভিত্তি শেখো।",
+    lessons:[
+      {title:"কনটেন্টের ধরন",desc:"ছবি, ভিডিও, লেখা ও শিক্ষামূলক কনটেন্ট সম্পর্কে জানো।"},
+      {title:"কনটেন্ট পরিকল্পনা",desc:"দর্শক, বিষয় ও প্রকাশের পরিকল্পনা তৈরি করো।"},
+      {title:"ভিডিওর স্ক্রিপ্ট",desc:"ভিডিওর শুরু, মূল অংশ ও শেষের খসড়া লেখো।"},
+      {title:"কপিরাইটের ভিত্তি",desc:"নিজের কাজ তৈরি করো এবং অনুমতি ছাড়া অন্যের কাজ ব্যবহার কোরো না।"}
+    ]
+  },
+  {
+    id:"freelance",icon:"💼",title:"Freelancing Basics",level:"Beginner",
+    description:"দক্ষতা, পোর্টফোলিও ও অনলাইন কাজের ভিত্তি শেখো।",
+    lessons:[
+      {title:"Freelancing কী?",desc:"ক্লায়েন্টের কাজ ও নিজের দক্ষতার সম্পর্ক বুঝে নাও।"},
+      {title:"একটি দক্ষতা বেছে নাও",desc:"নিজের আগ্রহ অনুযায়ী একটি দক্ষতা বেছে নিয়ে অনুশীলন করো।"},
+      {title:"Portfolio তৈরি",desc:"নিজের তৈরি নমুনা কাজ সাজিয়ে রাখো।"},
+      {title:"Scam থেকে সতর্কতা",desc:"আগাম টাকা চাওয়া বা নিশ্চিত আয়ের প্রতিশ্রুতি দেওয়া অফার যাচাই করো।"}
+    ]
+  }
+];
+
+const PLAN_TASKS = [
+  "আজকের লক্ষ্য ঠিক করো",
+  "একটি কোর্সের লেসন শেখো",
+  "Practice Lab-এ অনুশীলন করো",
+  "একটি ছোট কাজ তৈরি করো",
+  "আজ কী শিখলে তা লিখে রাখো"
+];
+
+const QUIZ = [
+  {q:"HTML-এর প্রধান কাজ কী?",options:["ওয়েবপেজের কাঠামো তৈরি","ইন্টারনেটের গতি বাড়ানো","কম্পিউটার চার্জ করা"],answer:0,why:"HTML ওয়েবপেজের কাঠামো ও কনটেন্ট নির্ধারণ করে।"},
+  {q:"CSS সাধারণত কী কাজে লাগে?",options:["ডেটা মুছে ফেলতে","ওয়েবপেজ সাজাতে","ইমেইল পাঠাতে"],answer:1,why:"CSS দিয়ে রং, লেআউট ও ডিজাইন নিয়ন্ত্রণ করা হয়।"},
+  {q:"JavaScript কী করতে পারে?",options:["শুধু ছবি আঁকতে","শুধু লেখা দেখাতে","ওয়েবপেজে ইন্টারঅ্যাকশন যোগ করতে"],answer:2,why:"JavaScript ওয়েবপেজে ইন্টারঅ্যাকশন ও আচরণ যোগ করতে পারে।"},
+  {q:"ভালো AI prompt-এ কী থাকা উপকারী?",options:["অস্পষ্ট নির্দেশনা","পরিষ্কার লক্ষ্য ও প্রেক্ষাপট","শুধু একটি ইমোজি"],answer:1,why:"স্পষ্ট লক্ষ্য ও প্রেক্ষাপট সাধারণত বেশি উপযোগী ফল পেতে সাহায্য করে।"},
+  {q:"অনলাইনে কাজের অফার আগাম টাকা চাইলে কী করবে?",options:["যাচাই করে সতর্ক সিদ্ধান্ত নেবে","অবিলম্বে টাকা পাঠাবে","ব্যক্তিগত পাসওয়ার্ড দেবে"],answer:0,why:"অফার যাচাই করো; পাসওয়ার্ড বা গোপন তথ্য কাউকে দিও না।"}
+];
+
+/* Local data */
+const STORAGE_KEY = "earnsmart_bd_v2";
+const defaultState = {
+  completed:[],
+  practiceDone:0,
+  planDone:[],
+  profile:{name:"",goal:"web"}
+};
+
+let state = loadState();
+let currentCourseId = "html";
+let currentLessonIndex = 0;
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+let quizFinished = false;
+let rotateOn = true;
+
+function loadState(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    if(!saved || typeof saved !== "object") return structuredClone(defaultState);
+    return {
+      completed:Array.isArray(saved.completed)?saved.completed:[],
+      practiceDone:Number(saved.practiceDone)||0,
+      planDone:Array.isArray(saved.planDone)?saved.planDone:[],
+      profile:saved.profile && typeof saved.profile==="object"
+        ? {...defaultState.profile,...saved.profile}
+        : {...defaultState.profile}
+    };
+  }catch(e){
+    return JSON.parse(JSON.stringify(defaultState));
+  }
+}
+
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+  }catch(e){
+    console.warn("Progress could not be saved in this browser.");
+  }
+}
+
+function lessonKey(courseId,index){
+  return courseId + "-" + index;
+}
+
+function currentCourse(){
+  return courses.find(c=>c.id===currentCourseId) || courses[0];
+}
+
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,ch=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[ch]);
+}
+
+/* Navigation */
+function navigate(pageId){
+  const page = document.getElementById(pageId);
+  if(!page) return;
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  page.classList.add("active");
+
+  document.querySelectorAll(".navbtn").forEach(b=>{
+    b.classList.toggle("active",b.dataset.go===pageId);
   });
-  noResults.hidden = count !== 0;
+
+  closeMenu();
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(pageId==="courses") renderCourses();
+  if(pageId==="home") updateStats();
+}
+
+document.addEventListener("click",event=>{
+  const button = event.target.closest("[data-go]");
+  if(button) navigate(button.dataset.go);
 });
+
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
+
+function closeMenu(){
+  menu.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded","false");
+}
+menuToggle.addEventListener("click",()=>{
+  const isOpen = menu.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded",String(isOpen));
+});
+document.addEventListener("click",event=>{
+  if(!menu.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
+});
+
+/* Course list */
+function courseProgress(course){
+  const completed = course.lessons.filter((lesson,index)=>
+    state.completed.includes(lessonKey(course.id,index))
+  ).length;
+  return {completed,total:course.lessons.length,percent:Math.round(completed/course.lessons.length*100)};
+}
+
+function renderCourses(){
+  const query = document.getElementById("courseSearch").value.trim().toLowerCase();
+  const filtered = courses.filter(c=>
+    (c.title+" "+c.description+" "+c.level).toLowerCase().includes(query)
+  );
+  const grid = document.getElementById("courseGrid");
+
+  if(!filtered.length){
+    grid.innerHTML='<div class="card">কোনো কোর্স পাওয়া যায়নি। অন্য শব্দ দিয়ে খোঁজো।</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(c=>{
+    const p = courseProgress(c);
+    return `
+      <article class="card course-card">
+        <div class="row between"><span class="course-icon">${c.icon}</span><span class="tag">${c.level}</span></div>
+        <h3>${escapeHTML(c.title)}</h3>
+        <p>${escapeHTML(c.description)}</p>
+        <div class="row between small"><span>${p.completed}/${p.total} লেসন</span><span>${p.percent}%</span></div>
+        <div class="progress"><span style="width:${p.percent}%"></span></div>
+        <button class="btn primary open-course" data-course="${c.id}">কোর্স খুলুন →</button>
+      </article>`;
+  }).join("");
+
+  grid.querySelectorAll(".open-course").forEach(btn=>{
+    btn.addEventListener("click",()=>openCourse(btn.dataset.course));
+  });
+}
+
+document.getElementById("courseSearch").addEventListener("input",renderCourses);
+
+function openCourse(courseId){
+  if(!courses.some(c=>c.id===courseId)) return;
+  currentCourseId = courseId;
+  const c = currentCourse();
+  const p = courseProgress(c);
+
+  document.getElementById("courseDetailContent").innerHTML = `
+    <div class="hero" style="margin-top:16px">
+      <div class="course-icon">${c.icon}</div>
+      <h1>${escapeHTML(c.title)}</h1>
+      <p>${escapeHTML(c.description)}</p>
+      <span class="tag">${p.completed}/${p.total} লেসন সম্পন্ন</span>
+    </div>
+    <h2>এই কোর্সের লেসন</h2>
+    <div class="lesson-list">
+      ${c.lessons.map((l,i)=>{
+        const done = state.completed.includes(lessonKey(c.id,i));
+        return `<button class="lesson ${done?"done":""}" data-lesson="${i}">
+          <div class="row between"><strong>${i+1}. ${escapeHTML(l.title)}</strong><span>${done?"✓":"▶"}</span></div>
+          <div class="small muted">${escapeHTML(l.desc)}</div>
+        </button>`;
+      }).join("")}
+    </div>`;
+
+  document.getElementById("courseDetailContent").querySelectorAll("[data-lesson]").forEach(btn=>{
+    btn.addEventListener("click",()=>openLesson(Number(btn.dataset.lesson)));
+  });
+  navigate("courseDetail");
+}
+
+/* Lesson player */
+function openLesson(index){
+  const c = currentCourse();
+  if(index<0 || index>=c.lessons.length) return;
+  currentLessonIndex = index;
+  const lesson = c.lessons[index];
+
+  document.getElementById("playerTitle").textContent = lesson.title;
+  document.getElementById("lessonDescription").textContent = lesson.desc;
+  document.getElementById("lessonStatus").textContent =
+    state.completed.includes(lessonKey(c.id,index)) ? "✓ এই লেসনটি সম্পন্ন হয়েছে।" : "এই লেসন শেষ হলে Complete Lesson চাপ দাও।";
+
+  document.getElementById("completeLesson").textContent =
+    state.completed.includes(lessonKey(c.id,index)) ? "✓ সম্পন্ন হয়েছে" : "✓ Complete Lesson";
+
+  document.getElementById("prevLesson").disabled = index===0;
+  document.getElementById("nextLesson").disabled = index===c.lessons.length-1;
+
+  document.getElementById("backToCourse").onclick=()=>openCourse(c.id);
+  navigate("player");
+}
+
+document.getElementById("completeLesson").addEventListener("click",()=>{
+  const key = lessonKey(currentCourseId,currentLessonIndex);
+  if(!state.completed.includes(key)){
+    state.completed.push(key);
+    saveState();
+    updateStats();
+    renderCourses();
+  }
+  document.getElementById("lessonStatus").textContent = "✓ লেসনটি সম্পন্ন হিসেবে সংরক্ষণ করা হয়েছে।";
+  document.getElementById("completeLesson").textContent = "✓ সম্পন্ন হয়েছে";
+});
+
+document.getElementById("prevLesson").addEventListener("click",()=>{
+  openLesson(currentLessonIndex-1);
+});
+document.getElementById("nextLesson").addEventListener("click",()=>{
+  openLesson(currentLessonIndex+1);
+});
+
+/* Dashboard statistics */
+function updateStats(){
+  const total = courses.reduce((sum,c)=>sum+c.lessons.length,0);
+  const done = state.completed.length;
+  const percent = total ? Math.round(done/total*100) : 0;
+
+  document.getElementById("statCourses").textContent = courses.length;
+  document.getElementById("statLessons").textContent = done;
+  document.getElementById("statProgress").textContent = percent+"%";
+  document.getElementById("homeProgress").style.width = percent+"%";
+  document.getElementById("homeProgressLabel").textContent = percent+"%";
+}
+
+/* HTML practice */
+const starterCode = document.getElementById("practiceCode").value;
+
+function runPractice(){
+  const code = document.getElementById("practiceCode").value;
+  document.getElementById("codeOutput").srcdoc = code;
+  state.practiceDone++;
+  saveState();
+  updatePractice();
+}
+
+document.getElementById("runCode").addEventListener("click",runPractice);
+document.getElementById("resetCode").addEventListener("click",()=>{
+  document.getElementById("practiceCode").value = starterCode;
+  document.getElementById("codeOutput").srcdoc = starterCode;
+});
+
+/* Prompt practice: local checks, not an AI API */
+document.getElementById("checkPrompt").addEventListener("click",()=>{
+  const prompt = document.getElementById("promptInput").value.trim();
+  const feedback = document.getElementById("promptFeedback");
+
+  if(prompt.length<10){
+    feedback.textContent = "আরও বিস্তারিত লিখো। কী করতে হবে, কোন বিষয় নিয়ে এবং কী ধরনের ফলাফল চাও—তা বোঝানোর চেষ্টা করো।";
+    return;
+  }
+
+  const tips = [];
+  if(prompt.length<40) tips.push("কাজটি আরও নির্দিষ্ট করে লেখো।");
+  if(!/(যেমন|ধাপ|তালিকা|সহজ|দিন|কারণ|format|step|list|example|beginner)/i.test(prompt)){
+    tips.push("উত্তরের ধরন বা কাঠামো উল্লেখ করতে পারো।");
+  }
+  if(!/[.!?।]/.test(prompt)) tips.push("প্রয়োজনে নির্দেশনাটি বাক্যে ভাগ করো।");
+
+  feedback.textContent = tips.length
+    ? "ভালো শুরু! উন্নতির পরামর্শ: "+tips.join(" ")
+    : "ভালো! তোমার prompt যথেষ্ট বিস্তারিত মনে হচ্ছে। ফলাফল পেলে সেটি যাচাই করতে ভুলবে না।";
+
+  state.practiceDone++;
+  saveState();
+  updatePractice();
+});
+
+/* Quiz */
+function renderQuiz(){
+  const area = document.getElementById("quizArea");
+
+  if(quizFinished){
+    area.innerHTML = `<h3>Quiz শেষ! তোমার স্কোর: ${quizScore}/${QUIZ.length}</h3><p>আবার শুরু করে অনুশীলন করতে পারো।</p>`;
+    document.getElementById("nextQuiz").disabled = true;
+    document.getElementById("quizScore").textContent = "সঠিক উত্তর: "+quizScore;
+    return;
+  }
+
+  const q = QUIZ[quizIndex];
+  area.innerHTML = `
+    <p>প্রশ্ন ${quizIndex+1}/${QUIZ.length}</p>
+    <h3>${escapeHTML(q.q)}</h3>
+    ${q.options.map((option,i)=>`<button class="option" data-answer="${i}">${escapeHTML(option)}</button>`).join("")}
+    <div class="feedback" id="quizFeedback" aria-live="polite">একটি উত্তর বেছে নাও।</div>`;
+
+  area.querySelectorAll("[data-answer]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      if(quizAnswered) return;
+      quizAnswered = true;
+      const answer = Number(btn.dataset.answer);
+      const correct = answer===q.answer;
+      if(correct) quizScore++;
+
+      area.querySelectorAll("[data-answer]").forEach(b=>{
+        b.disabled = true;
+        if(Number(b.dataset.answer)===q.answer) b.classList.add("correct");
+      });
+      if(!correct) btn.classList.add("wrong");
+
+      document.getElementById("quizFeedback").textContent =
+        (correct?"সঠিক উত্তর! ":"চেষ্টা ভালো হয়েছে। ") + q.why;
+      document.getElementById("quizScore").textContent =
+        "এখন পর্যন্ত সঠিক উত্তর: "+quizScore;
+    });
+  });
+
+  document.getElementById("nextQuiz").disabled = false;
+}
+
+document.getElementById("nextQuiz").addEventListener("click",()=>{
+  if(!quizAnswered){
+    document.getElementById("quizScore").textContent = "আগে একটি উত্তর বেছে নাও।";
+    return;
+  }
+  if(quizIndex===QUIZ.length-1){
+    quizFinished = true;
+    renderQuiz();
+    state.practiceDone++;
+    saveState();
+    updatePractice();
+    return;
+  }
+  quizIndex++;
+  quizAnswered = false;
+  renderQuiz();
+});
+
+document.getElementById("restartQuiz").addEventListener("click",()=>{
+  quizIndex=0;quizScore=0;quizAnswered=false;quizFinished=false;
+  document.getElementById("quizScore").textContent="";
+  renderQuiz();
+});
+
+function updatePractice(){
+  document.getElementById("practiceCount").textContent = state.practiceDone;
+  const percent = Math.min(100,state.practiceDone*10);
+  document.getElementById("practiceProgress").style.width = percent+"%";
+}
+
+/* Learning plan */
+function renderPlan(){
+  const container = document.getElementById("planTasks");
+  container.innerHTML = PLAN_TASKS.map((task,i)=>`
+    <label class="row" style="gap:10px;padding:9px 0">
+      <input type="checkbox" data-task="${i}" style="width:auto" ${state.planDone.includes(i)?"checked":""}>
+      <span>${escapeHTML(task)}</span>
+    </label>`).join("");
+
+  container.querySelectorAll("[data-task]").forEach(box=>{
+    box.addEventListener("change",()=>{
+      const i = Number(box.dataset.task);
+      if(box.checked && !state.planDone.includes(i)) state.planDone.push(i);
+      if(!box.checked) state.planDone = state.planDone.filter(n=>n!==i);
+      saveState();
+      updatePlanProgress();
+    });
+  });
+  updatePlanProgress();
+}
+
+function updatePlanProgress(){
+  const percent = Math.round(state.planDone.length/PLAN_TASKS.length*100);
+  document.getElementById("planProgress").style.width=percent+"%";
+  document.getElementById("planLabel").textContent=percent+"% সম্পন্ন";
+}
+
+document.getElementById("resetPlan").addEventListener("click",()=>{
+  state.planDone=[];
+  saveState();
+  renderPlan();
+});
+
+/* Profile */
+function loadProfile(){
+  document.getElementById("profileName").value=state.profile.name||"";
+  document.getElementById("profileGoal").value=state.profile.goal||"web";
+}
+
+document.getElementById("saveProfile").addEventListener("click",()=>{
+  state.profile.name=document.getElementById("profileName").value.trim();
+  state.profile.goal=document.getElementById("profileGoal").value;
+  saveState();
+  document.getElementById("profileMessage").textContent="প্রোফাইল এই ব্রাউজারে সংরক্ষণ করা হয়েছে।";
+});
+
+document.getElementById("clearProgress").addEventListener("click",()=>{
+  const confirmed = confirm("তুমি কি নিশ্চিত? এই ব্রাউজারে রাখা শেখার অগ্রগতি মুছে যাবে।");
+  if(!confirmed) return;
+
+  state = JSON.parse(JSON.stringify(defaultState));
+  saveState();
+  updateStats();
+  updatePractice();
+  renderPlan();
+  loadProfile();
+  renderCourses();
+  document.getElementById("profileMessage").textContent="এই ব্রাউজারের অগ্রগতি মুছে ফেলা হয়েছে।";
+});
+
+/* 3D viewer controls */
+const viewer = document.getElementById("modelViewer");
+
+document.getElementById("rotateToggle").addEventListener("click",()=>{
+  rotateOn=!rotateOn;
+  if(rotateOn){
+    viewer.setAttribute("auto-rotate","");
+    document.getElementById("rotateToggle").textContent="⏸ ঘোরানো বন্ধ";
+  }else{
+    viewer.removeAttribute("auto-rotate");
+    document.getElementById("rotateToggle").textContent="▶ ঘোরানো চালু";
+  }
+});
+
+function zoomModel(multiplier){
+  if(!viewer || typeof viewer.getCameraOrbit!=="function") return;
+  try{
+    const orbit = viewer.getCameraOrbit();
+    const radius = Math.max(0.5,Math.min(20,orbit.radius*multiplier));
+    viewer.cameraOrbit = `${orbit.theta}rad ${orbit.phi}rad ${radius}m`;
+  }catch(e){
+    console.warn("3D zoom is not available yet.");
+  }
+}
+
+document.getElementById("zoomIn").addEventListener("click",()=>zoomModel(0.8));
+document.getElementById("zoomOut").addEventListener("click",()=>zoomModel(1.25));
+document.getElementById("resetModel").addEventListener("click",()=>{
+  viewer.cameraOrbit="0deg 75deg 105%";
+  viewer.fieldOfView="30deg";
+  if(rotateOn) viewer.setAttribute("auto-rotate","");
+});
+
+/* Start the app */
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("codeOutput").srcdoc=starterCode;
+renderCourses();
+renderPlan();
+renderQuiz();
+loadProfile();
+updateStats();
+updatePractice();
 </script>
-
-<section id="video-course" style="padding:25px 5%;max-width:900px;margin:auto">
-  <h2 style="text-align:center">🎬 EarnSmart-BD Video Academy</h2>
-  <p style="text-align:center">ফ্রিতে ভিডিও দেখে AI শেখো।</p>
-
-  <div style="background:white;padding:16px;border-radius:14px;margin:20px 0;box-shadow:0 4px 15px #0001">
-    <h3>🤖 Lesson 1: AI ও Neural Networks</h3>
-    <p>AI কীভাবে শেখে, তার পরিচিতি।</p>
-    <div style="position:relative;width:100%;aspect-ratio:16/9">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/aircAruvnKk"
-        title="Neural Networks Explained"
-        loading="lazy"
-        allowfullscreen
-        style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:10px">
-      </iframe>
-    </div>
-  </div>
-
-  <div style="background:white;padding:16px;border-radius:14px;margin:20px 0;box-shadow:0 4px 15px #0001">
-    <h3>💻 Lesson 2: Large Language Models</h3>
-    <p>ভাষাভিত্তিক AI মডেল সম্পর্কে জানো।</p>
-    <div style="position:relative;width:100%;aspect-ratio:16/9">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/zjkBMFhNj_g"
-        title="Large Language Models Explained"
-        loading="lazy"
-        allowfullscreen
-        style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:10px">
-      </iframe>
-    </div>
-  </div>
-</section>
 </body>
 </html>
